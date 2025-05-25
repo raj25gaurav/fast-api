@@ -45,11 +45,3 @@ def get_blog(blog_id: int):
             return blog
     raise HTTPException(status_code=404, detail="Blog not found")
 
-# Step 5: Delete a blog by ID
-@app.delete("/blog/{blog_id}")
-def delete_blog(blog_id: int):
-    for index, blog in enumerate(blogs):
-        if blog["id"] == blog_id:
-            deleted = blogs.pop(index)
-            return {"message": "Blog deleted", "blog": deleted}
-    raise HTTPException(status_code=404, detail="Blog not found")
